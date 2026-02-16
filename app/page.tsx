@@ -1,3 +1,29 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Strategic Advisory & Government Relations in East Africa",
+  description:
+    "Viremont Advisory Group provides government relations, tender advisory, market entry strategy and risk intelligence for institutional investors and multinationals operating in East Africa.",
+  keywords: [
+    "Government relations East Africa",
+    "Tender advisory Africa",
+    "Market entry Kenya",
+    "Political risk advisory",
+    "East Africa investment advisory",
+    "Defence advisory Africa",
+  ],
+  alternates: {
+    canonical: "https://viremontadvisorygroup.com",
+  },
+  openGraph: {
+    title:
+      "Strategic Advisory & Government Relations in East Africa | Viremont Advisory Group",
+    description:
+      "Institution-level advisory across government engagement, infrastructure, defence, energy and investment strategy in East Africa.",
+    url: "https://viremontadvisorygroup.com",
+  },
+};
+
 import Link from "next/link";
 
 export default function Home() {

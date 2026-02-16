@@ -1,3 +1,21 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Government Relations, Market Entry & Risk Advisory Services",
+  description:
+    "Our services include government relations advisory, tender positioning, market entry structuring, political risk assessment and strategic intelligence across East Africa.",
+  keywords: [
+    "Government relations consulting Africa",
+    "Tender advisory Kenya",
+    "Political risk consulting East Africa",
+    "Infrastructure advisory Africa",
+    "Defence procurement advisory",
+  ],
+  alternates: {
+    canonical: "https://viremontadvisorygroup.com/services",
+  },
+};
+
 import Link from "next/link";
 
 export default function ServicesPage() {

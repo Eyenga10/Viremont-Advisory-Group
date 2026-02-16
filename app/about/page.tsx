@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Viremont Advisory Group",
+  description:
+    "Learn about Viremont Advisory Group — a strategic advisory firm focused on government engagement, infrastructure, defence and institutional investment across East Africa.",
+  alternates: {
+    canonical: "https://viremontadvisorygroup.com/about",
+  },
+};
+
 import Link from "next/link";
 
 export default function About() {

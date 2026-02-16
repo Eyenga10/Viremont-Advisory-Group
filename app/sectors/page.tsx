@@ -1,54 +1,65 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Strategic Sectors: Defence, Energy, Infrastructure & More",
+  description:
+    "We advise across defence, infrastructure, energy, ICT, agriculture, finance and climate-related sectors aligned with East Africa’s strategic priorities.",
+  alternates: {
+    canonical: "https://viremontadvisorygroup.com/sectors",
+  },
+};
+
 export default function Sectors() {
   const sectors = [
     {
       name: "Defence & National Security",
       desc:
-        "Support to defence, security and law-enforcement programmes, including equipment, technology, logistics and situational-awareness solutions in regulated environments.",
+        "Viremont Advisory Group provides strategic advisory support to defence, national security and law-enforcement related programmes across East Africa. We assist international defence manufacturers, technology providers and institutional investors in navigating regulatory frameworks, procurement structures and sovereign engagement processes., logistics and situational-awareness solutions in regulated environments.",
     },
     {
       name: "Energy & Natural Resources",
       desc:
-        "Power generation, transmission, renewables, oil & gas and critical minerals aligned with national energy and transition priorities.",
+        "Advisory support for government-linked energy projects including power generation contracts, grid expansion, renewable energy procurement, oil & gas concessions and critical mineral development. We assist sponsors and contractors navigating public-sector frameworks, tender positioning and sovereign energy initiatives across East Africa.",
     },
     {
       name: "Infrastructure & Transport",
       desc:
-        "Roads, rail, ports, airports and logistics corridors, with a focus on PPPs, sovereign-backed projects and long-term concession models.",
+        "Advisory services supporting roads, railways, ports, airports and logistics corridor development under public–private partnerships (PPP), sovereign procurement frameworks and long-term concession agreements. We assist clients navigating government infrastructure tenders, regulatory approvals and state-backed project structures across East Africa.",
     },
     {
       name: "Agriculture & Food Security",
       desc:
-        "Mechanisation, inputs, irrigation, storage, agro-processing and strategic grain or fertilizer programmes that support national food security.",
+        "Advisory support for mechanisation projects, irrigation infrastructure, fertilizer supply programmes, strategic grain reserves, agro-processing facilities and government food-security tenders. We assist clients participating in public-sector agricultural procurement and state-backed resilience initiatives across East Africa.",
     },
     {
       name: "ICT, Cyber & Digital Identity",
       desc:
-        "Digital public infrastructure, secure communications, e-government platforms, cyber, data centres and identity systems.",
+        "Advisory support for digital public infrastructure projects, cybersecurity programs, secure government communications, national ID systems, data centre development and e-government modernization tenders. We assist clients participating in regulated ICT procurement and sovereign digital transformation initiatives across East Africa.",
     },
     {
       name: "Financial Services & FinTech",
       desc:
-        "Digital payments, financial inclusion, lending platforms, capital-markets products and partnerships with banks and regulated entities.",
+        "Advisory support for government-linked digital payment systems, financial inclusion tenders, regulated lending platforms, capital market participation and partnerships with licensed banks and public financial institutions across East Africa. We assist clients engaging in central bank-regulated and sovereign-backed financial infrastructure projects.",
     },
     {
       name: "Health & Pharmaceuticals",
       desc:
-        "Hospital and clinic projects, medical equipment, diagnostics, cold-chain logistics and digital health solutions.",
+        "Advisory for government hospital projects, medical equipment tenders, diagnostics systems, cold-chain logistics, pharmaceutical distribution frameworks and digital health infrastructure across East Africa. We assist clients engaging in regulated public health procurement and sovereign health system modernisation programmes.",
     },
     {
       name: "Education, Training & Skills",
       desc:
-        "TVET, higher-education partnerships, defence and security training, and EdTech solutions focused on employable skills.",
+        "Advisory for government TVET projects, defence and security training contracts, higher-education partnerships, digital learning infrastructure and national skills development programmes across East Africa.",
     },
     {
       name: "Real Estate & Urban Development",
       desc:
-        "Affordable housing, mixed-use developments, logistics parks and urban infrastructure tied to national development plans.",
+        "Engagement across affordable housing initiatives, urban regeneration schemes, logistics corridors, sovereign-backed developments and concession-based real estate projects across East Africa.",
     },
     {
       name: "Water, Climate & Environment",
       desc:
-        "Bulk water supply, dams, irrigation, sanitation, climate-resilience and environmental management programmes.",
+        "Engagement across dam construction, irrigation expansion, urban water systems, sanitation upgrades and climate adaptation initiatives funded through sovereign budgets, multilateral finance and PPP structures.",
     },
   ];
 

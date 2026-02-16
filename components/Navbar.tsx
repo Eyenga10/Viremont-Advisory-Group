@@ -17,16 +17,16 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // close mobile menu on route change
   useEffect(() => setOpen(false), [pathname]);
 
-  // lock body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const isDefenseActive = pathname.startsWith("/defense");
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
@@ -40,15 +40,16 @@ export default function Navbar() {
             height={200}
             priority
             className="h-16 md:h-20 w-auto object-contain"
-            sizes="(max-width: 768px) 260px, 360px"
           />
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-700">
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
           {links.map((link) => {
             const active =
-              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+              link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href);
 
             return (
               <Link
@@ -65,6 +66,19 @@ export default function Navbar() {
               </Link>
             );
           })}
+
+          {/* FORCE Defense button */}
+          <Link
+            href="/defense"
+            className={
+              "ml-2 inline-flex items-center justify-center rounded-full px-4 py-2 transition " +
+              (isDefenseActive
+                ? "bg-slate-900 text-white"
+                : "bg-slate-900 text-white hover:bg-slate-800")
+            }
+          >
+            Defense Contracts
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -82,36 +96,33 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden">
-          {/* overlay (starts under navbar on both breakpoints) */}
           <button
             aria-label="Close overlay"
             onClick={() => setOpen(false)}
             className="fixed inset-0 top-20 md:top-24 bg-black/30"
           />
 
-          {/* panel (starts under navbar on both breakpoints) */}
           <div className="fixed top-20 md:top-24 inset-x-0 bg-white border-b border-slate-200 shadow-lg">
-            <div className="max-w-7xl mx-auto px-6 py-6 grid gap-4">
-              {links.map((link) => {
-                const active =
-                  link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            <div className="max-w-7xl mx-auto px-6 py-6 grid gap-3">
+              {/* Defense first + highlighted */}
+              <Link
+                href="/defense"
+                onClick={() => setOpen(false)}
+                className="text-base font-semibold bg-slate-900 text-white px-4 py-3 rounded-lg"
+              >
+                Defense Contracts
+              </Link>
 
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className={
-                      "text-base font-semibold transition " +
-                      (active
-                        ? "text-slate-900"
-                        : "text-slate-600 hover:text-slate-900")
-                    }
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="text-base font-semibold text-slate-700 hover:text-slate-900 px-1 py-2"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

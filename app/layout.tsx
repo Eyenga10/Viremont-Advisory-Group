@@ -10,7 +10,6 @@ const inter = Inter({
   display: "swap",
 });
 
-// Update if you ever change domain
 const SITE_URL = "https://viremontadvisorygroup.com";
 const SITE_NAME = "Viremont Advisory Group";
 const SITE_DESC =
@@ -18,7 +17,6 @@ const SITE_DESC =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
@@ -30,9 +28,7 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
 
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
 
   robots: {
     index: true,
@@ -55,7 +51,6 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        // Put a proper OG image at /public/og.png (1200x630)
         url: "/og.png",
         width: 1200,
         height: 630,
@@ -72,7 +67,6 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    // Put favicon files in /public
     icon: [
       { url: "/favicon.ico" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -87,7 +81,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f172a", // slate-900 vibe
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
@@ -95,71 +89,70 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Match this to your Navbar height:
-  // If your Navbar is h-20 md:h-24, use pt-20 md:pt-24
   const navOffset = "pt-20 md:pt-24";
 
-  // JSON-LD: helps Google understand your org
+  // ✅ JSON-LD (Organization)
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/logov1.png`,
+    email: "info@viremontadvisorygroup.com",
+    telephone: "+254108675410",
     contactPoint: [
       {
         "@type": "ContactPoint",
-        contactType: "business inquiries",
+        contactType: "Business Inquiries",
         email: "info@viremontadvisorygroup.com",
         telephone: "+254108675410",
-        areaServed: "EA",
+        areaServed: "Africa",
         availableLanguage: ["en"],
       },
     ],
+    // Add later when you create these:
+    // sameAs: ["https://www.linkedin.com/company/viremont-advisory-group"],
+  };
+
+  // ✅ JSON-LD (ProfessionalService)
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: SITE_DESC,
+    areaServed: "East Africa",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Nairobi",
+      addressCountry: "KE",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Business Inquiries",
+      email: "info@viremontadvisorygroup.com",
+      telephone: "+254108675410",
+    },
   };
 
   return (
     <html lang="en" className={inter.variable}>
-      <body className="antialiased bg-slate-50 text-slate-900">
-        <Navbar />
-
-        <main className={`${navOffset} min-h-screen`}>{children}</main>
-
-        <Footer />
-
+      <head>
+        {/* ✅ Put JSON-LD in HEAD */}
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      name: "Viremont Advisory Group",
-      url: "https://viremontadvisorygroup.com",
-      description:
-        "Strategic advisory, government relations, market entry and risk intelligence services focused on East Africa.",
-      areaServed: {
-        "@type": "Place",
-        name: "East Africa",
-      },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Nairobi",
-        addressCountry: "KE",
-      },
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "Business Inquiries",
-        email: "info@viremontadvisorygroup.com",
-      },
-    }),
-  }}
-/>
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+        />
+      </head>
 
+      <body className="antialiased bg-slate-50 text-slate-900">
+        <Navbar />
+        <main className={`${navOffset} min-h-screen`}>{children}</main>
+        <Footer />
       </body>
     </html>
   );
